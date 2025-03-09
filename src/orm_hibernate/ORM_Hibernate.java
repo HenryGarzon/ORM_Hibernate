@@ -18,7 +18,7 @@ public class ORM_Hibernate {
 
                 session.beginTransaction();//Se da comienzo a la transacción
                 // Crear objeto Artista
-                Artista artista = new Artista("Alfredo", "Salamanca");
+                Artista artista = new Artista("Alf", "Salama");
 
                 // Guardar en la base de datos
                 session.save(artista);

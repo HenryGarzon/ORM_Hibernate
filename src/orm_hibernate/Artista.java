@@ -1,29 +1,24 @@
-
 package orm_hibernate;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name= "artista")
+@Table(name = "artista")
 public class Artista {
-    
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Solo este es el ID correcto
     @Column(name = "ID_Artista")
     private int idArtista;
-    
-    @Id
-    @Column(name = "Nombre")
+
+    @Column(name = "Nombre")    
     private String nombre;
-    
-    @Id
-    @Column(name = "Genero_Musical")
+
+    @Column(name = "Genero_Musical")    
     private String generoMusical;
 
-        public Artista() {
+    public Artista() {}
 
-    }
-    
-    
     public Artista(String nombre, String generoMusical) {
         this.nombre = nombre;
         this.generoMusical = generoMusical;
@@ -57,7 +52,4 @@ public class Artista {
     public String toString() {
         return "Artista{" + "idArtista=" + idArtista + ", nombre=" + nombre + ", generoMusical=" + generoMusical + '}';
     }
-    
-    
-    
 }
