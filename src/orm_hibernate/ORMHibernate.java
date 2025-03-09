@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ORM_Hibernate {
+public class ORMHibernate {
 
     public static void main(String[] args) {
 
@@ -18,7 +18,7 @@ public class ORM_Hibernate {
 
                 session.beginTransaction();//Se da comienzo a la transacción
                 // Crear objeto Artista
-                Artista artista = new Artista("Alf", "Salama");
+                Artista artista = new Artista("Angel", "Montana");
 
                 // Guardar en la base de datos
                 session.save(artista);

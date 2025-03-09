@@ -10,9 +10,6 @@
         <property name="connection.username">root</property>
         <property name="connection.password">henry</property>        
         
-        <!-- Configuración de Hibernate -->
-        <property name="hibernate.query.antlr_version">4.9.3</property>           
-        
         <!-- Configuración del pool de conexiones -->
         <!-- connection.pool_size → Especifica que Hibernate usará solo una conexión en el pool de prueba. -->
         <property name="connection.pool_size">1</property>  

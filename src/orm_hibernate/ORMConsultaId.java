@@ -4,14 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.List;
-
-public class ORM_Listado {
+public class ORMConsultaId {
 
     public static void main(String[] args) {
         // Crear SessionFactory
         try (SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml") // Cargar configuración de Hibernate
+                .configure("hibernate.cfg.xml") // Cargar configuración
                 .addAnnotatedClass(Artista.class) // Registrar la entidad
                 .buildSessionFactory()) {
 
@@ -19,21 +17,21 @@ public class ORM_Listado {
             try (Session session = factory.openSession()) {
                 session.beginTransaction(); // Iniciar transacción
 
-                // 🔹 Obtener la lista completa de artistas
-                List<Artista> artistas = session.createQuery("from Artista", Artista.class).getResultList();
+                // 🔹 ID del artista a consultar (DEBE SER UN ENTERO)
+                int idArtista = 16; // Cambiar según la BD
 
-                // 🔹 Mostrar los resultados
-                if (!artistas.isEmpty()) {
-                    System.out.println("Lista de Artistas:");
-                    for (Artista artista : artistas) {
-                        System.out.println(artista);
-                    }
+                // 🔹 Obtener el artista desde la BD
+                Artista artista = session.get(Artista.class, idArtista);
+
+                // 🔹 Mostrar el resultado
+                if (artista != null) {
+                    System.out.println("Registro obtenido: " + artista);
                 } else {
-                    System.out.println("No hay artistas registrados en la base de datos.");
+                    System.out.println("No se encontró el artista con ID: " + idArtista);
                 }
 
                 session.getTransaction().commit(); // Confirmar transacción
-                System.out.println("Listado finalizado correctamente");
+                System.out.println("Consulta finalizada correctamente");
 
             } catch (Exception e) {
                 System.err.println("Error en la consulta: " + e.getMessage());
